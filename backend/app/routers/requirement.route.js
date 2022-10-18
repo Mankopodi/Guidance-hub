@@ -16,6 +16,7 @@ const controller = require("../controllers/requirement.controller");
 
 app.post("/createRequirements", controller.createRequirements);
 
-app.get('/getoneRequirement/:careerpathId', controller.getOneRequirement);
+app.get('/getoneRequirement/:id', controller.getOneRequirement);
 
 module.exports = app;
+

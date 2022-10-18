@@ -31,15 +31,16 @@ CREATE TABLE summary(
 
 CREATE TABLE salaryimage(
     id serial not null primary key,
-    image text[],
+    image text,
     careerpathId int not null,
     foreign key(careerpathId) references careerpath(id)
 );
 
 CREATE TABLE question(
     id serial not null primary key,
-    question json,
+    question jsonb,
     image varchar(255),
+    type int,
     categoryId int not null,
     careerpathId int not null,
     foreign key(categoryId) references category(id),
@@ -49,7 +50,7 @@ CREATE TABLE question(
 CREATE TABLE requirements(
     id serial not null primary key,
 	requirements text,
-	careerpathId int,
+	careerpathId int not null,
 	foreign key(careerpathId) references careerpath(id)
  );
  
@@ -57,6 +58,6 @@ CREATE TABLE qualifications(
 	 id serial not null primary key,
 	 qualification varchar(255),
 	 description text,
-	 requirementsId int,
+	 requirementsId int not null,
 	 foreign key (requirementsId) references requirements(id)
  );
